@@ -21,7 +21,6 @@ public class GestorEstudiantes {
     public static Estudiante encontrarMejorEstudiante(Estudiante[] estudiantes) {
         Estudiante mejor = null;
         double mejorNota = -1;
-
         for (Estudiante estudiante : estudiantes) {
             double media = calcularNotaMedia(estudiante); // Posible fallo aquí
             if (media > mejorNota) {
@@ -29,7 +28,7 @@ public class GestorEstudiantes {
                 mejor = estudiante;
             }
         }
-        return mejor; // Error si la lista está vacía
+        return mejor;
     }
 
     // Guarda los resultados en un fichero
