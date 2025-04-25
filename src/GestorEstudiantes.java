@@ -19,16 +19,22 @@ public class GestorEstudiantes {
 
     // Encuentra al estudiante con la mejor nota media
     public static Estudiante encontrarMejorEstudiante(Estudiante[] estudiantes) {
-        Estudiante mejor = null;
-        double mejorNota = -1;
-        for (Estudiante estudiante : estudiantes) {
-            double media = calcularNotaMedia(estudiante); // Posible fallo aquí
-            if (media > mejorNota) {
-                mejorNota = media;
-                mejor = estudiante;
+        try {
+            Estudiante mejor = null;
+            double mejorNota = -1;
+
+            for (Estudiante estudiante : estudiantes) {
+                double media = calcularNotaMedia(estudiante);
+                if (media > mejorNota) {
+                    mejorNota = media;
+                    mejor = estudiante;
+                }
             }
+
+            return mejor != null ? mejor : new Estudiante("Sin estudiantes válidos", 0, new double[0]);
+        } catch (Exception e) {
+            return new Estudiante("Sin estudiantes",0, new double[0]);
         }
-        return mejor;
     }
 
     // Guarda los resultados en un fichero
